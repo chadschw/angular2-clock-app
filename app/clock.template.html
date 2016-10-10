@@ -1,0 +1,60 @@
+
+
+
+<div class="draggable" id="clock-div">
+    <table 
+        class=clock-obj
+        (mouseenter)="OnClockMouseEnter()"
+        (mouseleave)="OnClickMouseLeave()">
+        <tr>
+            <td class=time>
+                {{Time | date: 'shortTime' | lowercase}}
+            </td>
+        </tr>
+        <tr>
+            <td class=date>
+                {{Time | date: 'fullDate'}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan = 2
+                style="text-align: left">
+                <div 
+                    class=small-text
+                     *ngIf="_showControls">
+                    Width: <a href=# (click)="Wider()">[...]</a>&nbsp;&nbsp;
+                           <a href=# (click)="Narrower()">[.]</a>&nbsp;&nbsp;
+                           <a href=# (click)="FitHeight()">Height</a>&nbsp;&nbsp;
+                           <a href=# (click)="FitWidth()">Width</a><br>
+                    Opacity: 
+                        <a href=# (click)="SetBgImgOpacity(.25)">25%</a>&nbsp;&nbsp;
+                        <a href=# (click)="SetBgImgOpacity(.50)">50%</a>&nbsp;&nbsp;
+                        <a href=# (click)="SetBgImgOpacity(.75)">75%</a>&nbsp;&nbsp;
+                        <a href=# (click)="SetBgImgOpacity(1)">100%</a><br>
+                        <a href=# (click)="Darker()">\/</a>&nbsp;&nbsp;<a href=# (click)="Lighter()">/\</a>
+                    <table>
+                        <tr>
+                            <td>
+                                <div *ngFor="let url of _imgUrls">
+                                    <img
+                                        src={{url}} 
+                                        style="width: 50px" 
+                                        (click)="OnSelectImgClick(url)">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="draggable" id="controls-div">
+    
+</div>
+
+
+<div id="background-img-div" class="draggable">
+    <img id="background-image" class=background-image>
+<div>
