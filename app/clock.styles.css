@@ -51,6 +51,9 @@ a:visited {
     z-index: 1;
 }
 
-#controls-div {
+#analog-clock-div {
+    position: absolute;
+    height:200px;
+    width:200px;
     z-index: 1;
 }
