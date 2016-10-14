@@ -51,6 +51,7 @@ export class ClockComponent implements OnInit{
     private _bgImgDivElement: HTMLElement;
     private _bgImgWidth = 1000;
     private _bgImgWidthStep = 50;
+    private _digitalClock = false;
 
     ngOnInit() {
         $( () => {
@@ -83,6 +84,10 @@ export class ClockComponent implements OnInit{
     OnClickMouseLeave() {
         this._showControls = false;
     }
+
+    ToggleAnalogDigital() {
+        this._digitalClock = !this._digitalClock;
+    }    
 
     SetBgImgOpacity(opacity: number) {
         this._bgImgOpacity = opacity;
@@ -153,5 +158,13 @@ export class ClockComponent implements OnInit{
 
     OnSelectImgClick(url: string) {
         this._bgImgElement.src = url;
+    }
+
+    private NewImageUrl: string = "";
+    AddNewImage() {
+        if (this.NewImageUrl.length !== 0) {
+            this._imgUrls.push(this.NewImageUrl);
+            this.NewImageUrl = "";
+        }
     }
 }

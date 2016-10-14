@@ -3,22 +3,27 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'analog-clock',
     template: `
-        <div style="position:absolute">
-            <img id="second" src="second.png">
-            <img id="minute" src="minute.png">
-            <img id="hour" src="hour.png">
+        <div id="analog-clock-div" style="white-space: nowrap;">
+            <img id="second" src="second.png"><img id="minute" src="minute.png"><img id="hour" src="hour.png">
         </div>
     `,
     styles: [
         `
+        #analog-clock-div {
+            display: inline-block;
+            width: 200px;
+            overflow: hidden;
+        }
         #second {
-            position: absolute;
+            
         }
         #minute {
-            position: absolute;
+            position: relative;
+            left: -200px;
         }
         #hour {
-            position: absolute;
+            position: relative;
+            left: -400px;
         }
         `
     ]
