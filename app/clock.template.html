@@ -10,17 +10,17 @@
         (mouseenter)="OnClockMouseEnter()"
         (mouseleave)="OnClickMouseLeave()">
         <tr>
-            <td style="">
+            <td class="hover-hand">
                 <analog-clock  *ngIf="!_digitalClock"></analog-clock>
             </td>
         </tr>
         <tr *ngIf="_digitalClock">
-            <td class=time>
+            <td class="time hover-hand">
                 {{Time | date: 'shortTime' | lowercase}}
             </td>
         </tr>
         <tr *ngIf="_digitalClock" >
-            <td class=date>
+            <td class="date hover-hand">
                 {{Time | date: 'fullDate'}}
             </td>
         </tr>
@@ -39,11 +39,12 @@
                         <a href=# (click)="SetBgImgOpacity(.25)">25%</a>&nbsp;&nbsp;
                         <a href=# (click)="SetBgImgOpacity(.50)">50%</a>&nbsp;&nbsp;
                         <a href=# (click)="SetBgImgOpacity(.75)">75%</a>&nbsp;&nbsp;
-                        <a href=# (click)="SetBgImgOpacity(1)">100%</a>&nbsp;&nbsp;<a href=# (click)="Darker()">\/</a>&nbsp;&nbsp;<a href=# (click)="Lighter()">/\</a>
-                    <table>
+                        <a href=# (click)="SetBgImgOpacity(1)">100%</a>&nbsp;&nbsp;<br>
+                        <a href=# (click)="Darker()">\/</a>&nbsp;&nbsp;<a href=# (click)="Lighter()">/\</a>
+                    <table style="width: 200px">
                         <tr>
                             <td>
-                                <input type=text [(ngModel)]="NewImageUrl"><button (click)="AddNewImage()">Add</button>
+                                <input type=text [(ngModel)]="NewImageUrl" size="15"><button (click)="AddNewImage()">Add</button>
                             </td>
                         </tr>
                         <tr>
@@ -53,7 +54,7 @@
                                         src={{url}} 
                                         style="width: 50px" 
                                         (click)="OnSelectImgClick(url)">
-                                    <br *ngIf="(i+1)%4===0">  
+
                                 </span>
                             </td>
                         </tr>

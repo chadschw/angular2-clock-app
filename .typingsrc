@@ -1,0 +1,2 @@
+proxy="http://wall:8080"
+rejectUnauthorized=false

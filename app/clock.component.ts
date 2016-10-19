@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core'
 declare var $: any;
 
 @Component({
+    moduleId: module.id,
     selector: "clock",
     styleUrls: [
-        './app/clock.styles.css'
+        'clock.styles.css'
     ],
-    templateUrl: './app/clock.template.html'
+    templateUrl: 'clock.template.html'
 })
 export class ClockComponent implements OnInit{
     Time: Date;
@@ -46,7 +47,7 @@ export class ClockComponent implements OnInit{
     }
 
     private _bgImgElement: HTMLImageElement;
-    private _bgImgOpacity = 0.5;
+    private _bgImgOpacity = 1;
     private _opacityStep = 0.05;
     private _bgImgDivElement: HTMLElement;
     private _bgImgWidth = 1000;

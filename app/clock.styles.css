@@ -37,8 +37,11 @@ a:visited {
     text-decoration: none;
 }
 
+.hover-hand {
+    cursor: grab;
+}
+
 #background-image {
-    opacity: 0.5;
     z-index: 0;
 }
 
