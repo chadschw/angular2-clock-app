@@ -1,0 +1,40 @@
+
+<!--
+<div class="draggable" id="analog-clock-div">
+    
+</div>
+-->
+<div class="draggable" id="clock-div">
+    <table 
+        class=clock-obj>
+        <tr>
+            <td class="hover-hand">
+                <analog-clock  *ngIf="!clockSettings.Digital"></analog-clock>
+            </td>
+        </tr>
+        <tr *ngIf="clockSettings.Digital">
+            <td class="time hover-hand">
+                {{Time | date: 'shortTime' | lowercase}}
+            </td>
+        </tr>
+        <tr *ngIf="clockSettings.Digital">
+            <td class="date hover-hand">
+                {{Time | date: 'fullDate'}}
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div 
+    id="background-img-div" 
+    class="draggable"
+    [style.left]="clockSettings.BgImgXposAsString"
+    [style.top]="clockSettings.BgImgYposAsString">
+    <img 
+        id="background-image" 
+        class=background-image 
+        [src]="clockSettings.BgImgSrc"
+        [style.opacity]="clockSettings.BgImgOpacityAsString"
+        [style.height]="clockSettings.BgImgHeightAsString"
+        [style.width]="clockSettings.BgImgWidthAsString"/>
+<div>

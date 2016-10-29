@@ -1,0 +1,62 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
+.clock-obj {
+    border: 0px solid black;
+}
+
+.time {
+    font-size: 80px;
+}
+
+.date {
+    font-size: 16px;
+}
+
+.small-text {
+    font-family: 'Cormorant Garamond';
+    color: #ffffff;
+}
+
+td {
+    font-family: 'Cormorant Garamond';
+    color: #ffffff;
+    text-align: center;
+    padding: 0px;
+}
+
+a {
+    font-family: 'Cormorant Garamond';
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:visited {
+    font-family: 'Cormorant Garamond';
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.hover-hand {
+    cursor: grab;
+}
+
+#background-image {
+    z-index: 0;
+}
+
+#background-img-div {
+    position: absolute;
+    z-index: 0;
+}
+
+#clock-div {
+    z-index: 1;
+}
+
+#analog-clock-div {
+    position: absolute;
+    height:200px;
+    width:200px;
+    z-index: 1;
+}

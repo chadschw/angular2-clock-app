@@ -1,0 +1,65 @@
+<div *ngIf="collapsed" id=menu-container-collapsed>
+	<div style="float: left; padding: 10px; cursor: pointer;" (mousedown)="collapsed = !collapsed">
+		<span class=sel-icon-light-med-menu></span>
+	</div>
+</div>
+
+<div *ngIf="!collapsed" id=menu-container-expanded>
+
+	<div id=menu-collapse (mousedown)="collapsed = !collapsed">
+		<div style="padding: 10px;">
+			<span class=sel-icon-light-med-double-chevron></span>
+		</div>
+	</div>
+
+	<!--<img src='https://a2ua.com/boxes/boxes-001.jpg' style='width: 100%;'>-->
+
+	<div style="padding-left: 10px; padding-right: 10px;">
+
+		<div class="h1-text">
+			Settings
+		</div>
+
+		<div class=normal-text>
+			<a href=# (click)="clockSettings.Digital = !clockSettings.Digital">Analog/Digital</a><br> 
+            Width: <a href=# (click)="clockSettings.IncreaseImageWidth()">[...]</a>&nbsp;&nbsp;
+			<a href=# (click)="clockSettings.DecreaseImageWidth()">[.]</a>&nbsp;&nbsp;
+			<a href=# (click)="clockSettings.FitHeight()">Height</a>&nbsp;&nbsp;
+			<a href=# (click)="clockSettings.FitWidth()">Width</a><br> Opacity:
+			<a href=# (click)="clockSettings.SetBgImgOpacity(.25)">25%</a>&nbsp;&nbsp;
+			<a href=# (click)="clockSettings.SetBgImgOpacity(.50)">50%</a>&nbsp;&nbsp;
+			<a href=# (click)="clockSettings.SetBgImgOpacity(.75)">75%</a>&nbsp;&nbsp;
+			<a href=# (click)="clockSettings.SetBgImgOpacity(1)">100%</a>&nbsp;&nbsp;<br>
+			<a href=# (click)="clockSettings.Darker()">\/</a>&nbsp;&nbsp;<a href=# (click)="clockSettings.Lighter()">/\</a>
+		</div>
+
+        <div class=h2-text>
+			Add an Image
+		</div>
+
+		<div class=h2-text>
+			<input type=text [(ngModel)]="newImageUrl" size="15"><button (click)="AddNewImage()">Add</button>
+		</div>
+
+		<div class=h2-text>
+			Select an Image
+		</div>
+
+		<div>
+			<span *ngFor="let imgUrl of clockSettings.ImgUrls">
+                <img
+                    src={{imgUrl}}
+                    style="width: 50px;"
+                    (click)="OnSelectImageClick(imgUrl)"/>
+            </span>
+		</div>
+
+		<div class="h2-text">
+			A sub heading
+		</div>
+
+		<div class="normal-text">
+			And some more text here.
+		</div>
+	</div>
+</div>

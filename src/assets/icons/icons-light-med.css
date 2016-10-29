@@ -1,0 +1,16 @@
+
+/* Double Chevron */
+.sel-icon-light-med-double-chevron {
+    background-image: url('assets/icons/double_chevron/light/double_chevron_light_16.png');
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+/* Menu */
+.sel-icon-light-med-menu {
+    background-image: url('assets/icons/Menu/light/Menu_light_16.png');
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
