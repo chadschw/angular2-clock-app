@@ -9,6 +9,7 @@ import { ClockComponent } from './clock/clock.component';
 import { AnalogClockComponent } from './analog-clock/analog-clock.component';
 
 import { ClockSettingsService } from './clock-settings/clock-settings.service';
+import { ImgZoomService } from './clock/img-zoom.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ClockSettingsService } from './clock-settings/clock-settings.service';
     HttpModule
   ],
   providers: [
-    ClockSettingsService
+    ClockSettingsService,
+    ImgZoomService
   ],
   bootstrap: [AppComponent]
 })

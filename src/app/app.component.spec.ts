@@ -1,37 +1,41 @@
-/* tslint:disable:no-unused-variable */
-import { AppComponent } from './app.component';
+// /* tslint:disable:no-unused-variable */
+// import { AppComponent } from './app.component';
 
-import { TestBed }      from '@angular/core/testing';
+// import { TestBed }      from '@angular/core/testing';
 
-import { By }           from '@angular/platform-browser';
+// import { By }           from '@angular/platform-browser';
 
-////////  SPECS  /////////////
+// import { ClockComponent } from './clock/clock.component';
+// import { AnalogClockComponent } from './analog-clock/analog-clock.component';
+// import { NavBarComponent } from './nav-bar/nav-bar.component';
 
-/// Delete this
-describe('Smoke test', () => {
-  it('should run a passing test', () => {
-    expect(true).toEqual(true, 'should pass');
-  });
-});
+// ////////  SPECS  /////////////
 
-describe('AppComponent with TCB', function () {
-  beforeEach(() => {
-    TestBed.configureTestingModule({declarations: [AppComponent]});
-  });
+// /// Delete this
+// describe('Smoke test', () => {
+//   it('should run a passing test', () => {
+//     expect(true).toEqual(true, 'should pass');
+//   });
+// });
 
-  it('should instantiate component', () => {
-    let fixture = TestBed.createComponent(AppComponent);
-    expect(fixture.componentInstance instanceof AppComponent).toBe(true, 'should create AppComponent');
-  });
+// describe('AppComponent with TCB', function () {
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({declarations: [AppComponent]});
+//   });
 
-  it('should have expected <h1> text', () => {
-    let fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
+//   it('should instantiate component', () => {
+//     let fixture = TestBed.createComponent(AppComponent);
+//     expect(fixture.componentInstance instanceof AppComponent).toBe(true, 'should create AppComponent');
+//   });
 
-    let h1 = fixture.debugElement.query(el => el.name === 'h1').nativeElement;  // it works
+//   it('should have expected <h1> text', () => {
+//     let fixture = TestBed.createComponent(AppComponent);
+//     fixture.detectChanges();
 
-        h1 = fixture.debugElement.query(By.css('h1')).nativeElement;            // preferred
+//     let h1 = fixture.debugElement.query(el => el.name === 'h1').nativeElement;  // it works
 
-    expect(h1.innerText).toMatch(/angular app/i, '<h1> should say something about "Angular App"');
-  });
-});
+//         h1 = fixture.debugElement.query(By.css('h1')).nativeElement;            // preferred
+
+//     expect(h1.innerText).toMatch(/angular app/i, '<h1> should say something about "Angular App"');
+//   });
+// });

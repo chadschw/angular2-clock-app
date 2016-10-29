@@ -51,6 +51,7 @@ a:visited {
 }
 
 #clock-div {
+    display: inline-block;
     z-index: 1;
 }
 

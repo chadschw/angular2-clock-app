@@ -61,7 +61,7 @@ export class ClockSettingsService {
         }, 100);
     }
 
-    private SetImgWidthHeight(w, h) {
+    SetImgWidthHeight(w, h) {
         if (typeof w !== "string") {
             w = w + "px";
         }

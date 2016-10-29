@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, NgZone } from '@angular/core'
 
 import { ClockSettingsService } from '../clock-settings/clock-settings.service';
+import { ImgZoomService, ImgState } from './img-zoom.service';
 
 declare var $: any;
 
@@ -14,16 +15,69 @@ declare var $: any;
 export class ClockComponent implements OnInit{
     Time: Date;
 
-    constructor(private clockSettings: ClockSettingsService) {
+    constructor(
+        private clockSettings: ClockSettingsService,
+        private imgZoom: ImgZoomService,
+        private zone: NgZone) {
         this.Time = new Date(Date.now());
 
         setInterval(() => {
             this.OnInterval();
         }, 1000);
+
+        window.onmousewheel = (e: MouseWheelEvent) => {
+            this.zone.run(() => {
+                console.log(e);
+                this.OnMouseWheel(e.deltaY);
+            });
+        }
+
+        window.onmousemove = (e: MouseEvent) => {
+            this.OnMouseMove(e.x, e.y);
+        }
     }
 
     OnInterval() {
         this.Time = new Date(Date.now());
+    }
+
+    OnMouseWheel(delta: number) {
+        var zoomFactor = (delta > 0) ? 0.9 : 1.1;
+        var newImgState = this.imgZoom.Zoom(this.GetBgImgState(), zoomFactor, this.mx, this.my);
+        this.SetBgImgState(newImgState);
+    }
+
+    private mx: number = 0;
+    private my: number = 0;
+
+    OnMouseMove(x: number, y: number) {
+        this.mx = x;
+        this.my = y;
+    }
+
+    private GetBgImgState(): ImgState {
+        return ImgState.Create(
+            this.GetBgImgX(),
+            this.GetBgImgY(),
+            this._bgImgElement.height,
+            this._bgImgElement.width);
+    }
+
+    private GetBgImgX(): number {
+        var str: string = this._bgImgDivElement.style.left;
+        str = str.replace("px", "");
+        return parseInt(str);
+    }
+
+    private GetBgImgY(): number {
+        var str: string = this._bgImgDivElement.style.top;
+        str = str.replace("px", "");
+        return parseInt(str);
+    }
+
+    private SetBgImgState(imgState: ImgState) {
+        this.clockSettings.PlaceBgImgAt(imgState.x, imgState.y);
+        this.clockSettings.SetImgWidthHeight(imgState.w, imgState.h);
     }
 
     private _bgImgElement: HTMLImageElement;
