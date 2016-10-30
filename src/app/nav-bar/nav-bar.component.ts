@@ -1,5 +1,6 @@
-import { Component } from '@angular/core'
+import { Component, NgZone, OnInit } from '@angular/core'
 import { ClockSettingsService } from '../clock-settings/clock-settings.service';
+import { MouseMoveService } from '../mouse-move.service';
 
 @Component({
     selector: 'nav-bar',
@@ -9,14 +10,28 @@ import { ClockSettingsService } from '../clock-settings/clock-settings.service';
         '../../assets/icons/icons-light-med.css',
     ]
 })
-export class NavBarComponent
+export class NavBarComponent implements OnInit
 {
-    constructor(private clockSettings: ClockSettingsService) {}
+    constructor(
+        private clockSettings: ClockSettingsService,
+        private mouseMoveService: MouseMoveService,
+        private zone: NgZone) { }
+    
+    ngOnInit() {
+        this.mouseMoveService.AddCallback((e: MouseEvent) => {
+            this.zone.run(() => {
+                if (e.clientX > 400) {
+                    this.collapsed = true;
+                }
+            });
+        });
+    }
 
     private newImageUrl: string = "";
     AddNewImage() {
         if (this.newImageUrl.length !== 0) {
-            this.clockSettings.ImgUrls.push(this.newImageUrl);
+            //this.clockSettings.ImgUrls.push(this.newImageUrl);
+            this.clockSettings.AddImgUrl(this.newImageUrl);
             this.newImageUrl = "";
         }
     }

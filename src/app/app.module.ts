@@ -9,6 +9,8 @@ import { ClockComponent } from './clock/clock.component';
 import { AnalogClockComponent } from './analog-clock/analog-clock.component';
 
 import { ClockSettingsService } from './clock-settings/clock-settings.service';
+import { ImgUrlSaveLoadService } from './clock-settings/img-url-save-load.service';
+import { MouseMoveService } from './mouse-move.service';
 import { ImgZoomService } from './clock/img-zoom.service';
 
 @NgModule({
@@ -25,6 +27,8 @@ import { ImgZoomService } from './clock/img-zoom.service';
   ],
   providers: [
     ClockSettingsService,
+    MouseMoveService,
+    ImgUrlSaveLoadService,
     ImgZoomService
   ],
   bootstrap: [AppComponent]

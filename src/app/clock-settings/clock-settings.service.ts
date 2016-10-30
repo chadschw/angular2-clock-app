@@ -1,27 +1,31 @@
 import { Injectable } from '@angular/core';
+import { ImgUrlSaveLoadService } from './img-url-save-load.service';
 
 @Injectable()
 export class ClockSettingsService {
 
-    ImgUrls: string[] = [
-        "http://hdwallsize.com/wp-content/uploads/2013/04/Amazing-Sunrise-Landscape-Wallpaper.jpg",
-        "http://wallpapercave.com/wp/cik4PFd.jpg",
-        "https://s-media-cache-ak0.pinimg.com/originals/62/6e/07/626e07bfb56bbf629d94cb39a8355b34.jpg",
-        "http://www.hdwallpaperup.com/wp-content/uploads/2015/02/Amazing-Landscape-wallpaper.jpg",
-        "http://freewallpapers4desktop.com/wallpapers/amazing_landscape-1920x1080.jpg",
-        "http://www.animaatjes.de/wallpapers/wallpapers/landschaft/wallpaper_landschap_animaatjes-72.jpg"
-    ];
+    ImgUrls: string[] = [];
+
+    constructor(private imgUrlLoadSaveService: ImgUrlSaveLoadService) {
+        this.ImgUrls = imgUrlLoadSaveService.Load();
+        this.BgImgSrc = this.ImgUrls[0];
+    }
 
     BgImgXposAsString = "0px";
     BgImgYposAsString = "0px";
     
-    BgImgSrc = this.ImgUrls[0];
+    BgImgSrc: string;
     BgImgOpacityAsString = "1";
     
     BgImgWidthAsString: string = window.innerWidth + "px";
     BgImgHeightAsString = "auto";
 
     DigitalClock = false;
+
+    AddImgUrl(url: string) {
+        this.ImgUrls.push(url);
+        this.imgUrlLoadSaveService.Save(this.ImgUrls);
+    }
 
     IncreaseImageWidth() {
         this.AdjustBgImageWidth(50);

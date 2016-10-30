@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core'
 
 import { ClockSettingsService } from '../clock-settings/clock-settings.service';
+import { MouseMoveService } from '../mouse-move.service';
 import { ImgZoomService, ImgState } from './img-zoom.service';
 
 declare var $: any;
@@ -18,6 +19,7 @@ export class ClockComponent implements OnInit{
     constructor(
         private clockSettings: ClockSettingsService,
         private imgZoom: ImgZoomService,
+        private mouseMoveService: MouseMoveService,
         private zone: NgZone) {
         this.Time = new Date(Date.now());
 
@@ -27,14 +29,14 @@ export class ClockComponent implements OnInit{
 
         window.onmousewheel = (e: MouseWheelEvent) => {
             this.zone.run(() => {
-                console.log(e);
+                //console.log(e);
                 this.OnMouseWheel(e.deltaY);
             });
         }
 
-        window.onmousemove = (e: MouseEvent) => {
+        this.mouseMoveService.AddCallback((e: MouseEvent) => {
             this.OnMouseMove(e.x, e.y);
-        }
+        });
     }
 
     OnInterval() {
