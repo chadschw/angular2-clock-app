@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
 
+// TODO: persist an object that includes the image state, and the clock state... do that 
+// for each image so when you reload an image you get the state that you had left it in.
+class Model {
+    selectedIndex: number;
+    urls: string[];
+}
+
 @Injectable()
 export class ImgUrlSaveLoadService {
 

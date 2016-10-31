@@ -61,3 +61,13 @@
 .selected {
     background-color: #aaaeb2;
 }
+
+.link {
+    user-select: none;
+    color: blue;
+    cursor: pointer;
+}
+
+.strong {
+    font-weight: bolder;
+}

@@ -1,6 +1,14 @@
 
-
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+@import url('https://fonts.googleapis.com/css?family=Coiny');
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt');
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+
 .clock-obj {
     border: 0px solid black;
 }
@@ -14,12 +22,12 @@
 }
 
 .small-text {
-    font-family: 'Cormorant Garamond';
+    font-family: 'Open Sans';
     color: #ffffff;
 }
 
 td {
-    font-family: 'Cormorant Garamond';
+    font-family: 'Open Sans';
     color: #ffffff;
     text-align: center;
     padding: 0px;

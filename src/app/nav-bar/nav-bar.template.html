@@ -21,45 +21,93 @@
 		</div>
 
 		<div class=normal-text>
-			<a href=# (click)="clockSettings.Digital = !clockSettings.Digital">Analog/Digital</a><br> 
-            Width: <a href=# (click)="clockSettings.IncreaseImageWidth()">[...]</a>&nbsp;&nbsp;
-			<a href=# (click)="clockSettings.DecreaseImageWidth()">[.]</a>&nbsp;&nbsp;
-			<a href=# (click)="clockSettings.FitHeight()">Height</a>&nbsp;&nbsp;
-			<a href=# (click)="clockSettings.FitWidth()">Width</a><br> Opacity:
-			<a href=# (click)="clockSettings.SetBgImgOpacity(.25)">25%</a>&nbsp;&nbsp;
-			<a href=# (click)="clockSettings.SetBgImgOpacity(.50)">50%</a>&nbsp;&nbsp;
-			<a href=# (click)="clockSettings.SetBgImgOpacity(.75)">75%</a>&nbsp;&nbsp;
-			<a href=# (click)="clockSettings.SetBgImgOpacity(1)">100%</a>&nbsp;&nbsp;<br>
-			<a href=# (click)="clockSettings.Darker()">\/</a>&nbsp;&nbsp;<a href=# (click)="clockSettings.Lighter()">/\</a>
-		</div>
+			<span class=strong>Clock Style:</span><br>
+			<ul>
+				<li>
+					Clock is <span (click)="clockSettings.Digital = false" class=link>analog</span> or 
+					<span (click)="clockSettings.Digital = true" class=link>digital</span>.
+				</li>
+				<li>
+					(Double click the clock to toggle.)
+				</li> 
+				<!-- TODO: <li>
+					Clock text is white or black.
+				</li>-->
+				<li>
+					Digital Clock Font:
+					<ul>
+						<li *ngFor="let fontName of FontNames" (click)="clockSettings.SetFont(fontName)" class="link" [style.font-family]="fontName">{{fontName}}</li>
 
-        <div class=h2-text>
-			Add an Image
-		</div>
 
-		<div class=h2-text>
+						<!--<li (click)="clockSettings.SetFont('Coiny')" class=link style="font-family: 'Coiny'">Coiny</li>-->
+						<!--<li (click)="clockSettings.SetFont('Cormorant Garamond')" class=link>Cormorant Garamond</li>-->
+						<!--<li (click)="clockSettings.SetFont('Gloria Hallelujah')" class=link>Gloria Hallelujah</li>-->
+						<!--<li (click)="clockSettings.SetFont('Open Sans')" class=link>Open Sans</li>-->
+
+					</ul>
+				</li>
+			</ul>
+			
+			<span class=strong>Image Settings:</span><br>
+			<ul>
+				<li>
+					<span (click)="clockSettings.IncreaseImageWidth()" class=link>Zoom in</span> or 
+					<span (click)="clockSettings.DecreaseImageWidth()" class=link>zoom out</span>.
+				</li>
+				<li>
+					(Or use the mouse wheel.)
+				</li>
+				<li>
+					Fit image to page <span (click)="clockSettings.FitWidth()" class=link>width</span> or 
+					<span (click)="clockSettings.FitHeight()" class=link>height</span>.
+				</li>
+			</ul>
+			
+			<span class=strong>Image Opacity:</span><br>
+			<ul>
+				<li>
+					<span (click)="clockSettings.SetBgImgOpacity(.25)" class=link>25%</span>
+				</li>
+				<li>
+					<span (click)="clockSettings.SetBgImgOpacity(.50)" class=link>50%</span>
+				</li>
+				<li>
+					<span (click)="clockSettings.SetBgImgOpacity(.75)" class=link>75%</span>
+				</li>
+				<li>
+					<span (click)="clockSettings.SetBgImgOpacity(1)" class=link>100%</span><br>
+				</li>
+				<li>
+					<span (click)="clockSettings.Darker()" class=link>Darker</span>
+				</li>
+				<li>
+					<span (click)="clockSettings.Lighter()" class=link>Lighter</span>
+				</li>
+				<!-- TODO: <li>
+					page background color is white or black or something else
+				</li>-->
+			</ul>
+			
+			<span class=strong>Add an Image Url:</span><br>
 			<input type=text [(ngModel)]="newImageUrl" size="15"><button (click)="AddNewImage()">Add</button>
-		</div>
+			<br><br>
 
-		<div class=h2-text>
-			Select an Image
-		</div>
+			<span class=strong>Select an Image:</span><br>
+			<ul>
+				<li>(Ctrl + click to remove the image.)</li>
+			</ul>
 
-		<div>
-			<span *ngFor="let imgUrl of clockSettings.ImgUrls">
-                <img
-                    src={{imgUrl}}
-                    style="width: 50px;"
-                    (click)="OnSelectImageClick(imgUrl)"/>
-            </span>
-		</div>
-
-		<div class="h2-text">
-			A sub heading
-		</div>
-
-		<div class="normal-text">
-			And some more text here.
+			<div>
+				<span *ngFor="let imgUrl of clockSettings.ImgUrls">
+					<img src={{imgUrl}}
+						style="width: 50px;"
+						(click)="OnSelectImageClick(imgUrl)"/>
+					<span *ngIf="ShowRemoveButtonFor(imgUrl)">
+						<button (click)="OnRemoveImg()">Remove</button>
+						<button (click)="OnCancelRemoveImg()">Cancel</button>
+					</span>
+            	</span>
+			</div>
 		</div>
 	</div>
 </div>

@@ -27,6 +27,14 @@ export class ClockSettingsService {
         this.imgUrlLoadSaveService.Save(this.ImgUrls);
     }
 
+    RemoveImgUrl(url: string) {
+        var idx = this.ImgUrls.indexOf(url);
+        if (idx !== -1) {
+            this.ImgUrls.splice(idx, 1);
+            this.imgUrlLoadSaveService.Save(this.ImgUrls);
+        }
+    }
+
     IncreaseImageWidth() {
         this.AdjustBgImageWidth(50);
     }
@@ -111,6 +119,11 @@ export class ClockSettingsService {
 
     Lighter() {
         this.AdjustBgImgOpacity(-this.bgImgOpacityStep);
+    }
+
+    FontName: string = "Cormorant Garamond";
+    SetFont(name: string) {
+        this.FontName = name;
     }
 
     private bgImageWidthAsNumber: number = 1000;

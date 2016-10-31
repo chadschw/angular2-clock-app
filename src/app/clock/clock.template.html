@@ -13,12 +13,12 @@
             </td>
         </tr>
         <tr *ngIf="clockSettings.Digital">
-            <td class="time hover-hand">
+            <td class="time hover-hand"  [style.font-family]="clockSettings.FontName">
                 {{Time | date: 'shortTime' | lowercase}}
             </td>
         </tr>
         <tr *ngIf="clockSettings.Digital">
-            <td class="date hover-hand">
+            <td class="date hover-hand" [style.font-family]="clockSettings.FontName">
                 {{Time | date: 'fullDate'}}
             </td>
         </tr>
